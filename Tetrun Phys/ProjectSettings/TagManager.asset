@@ -13,6 +13,7 @@ TagManager:
   - outOfBounds
   - spawn1
   - finalLevel
+  - Main Menu
   layers:
   - Default
   - TransparentFX

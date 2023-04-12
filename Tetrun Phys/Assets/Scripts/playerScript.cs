@@ -12,10 +12,7 @@ public class playerScript : MonoBehaviour {
     private float speed = 8f;
     public GameObject indicator;
     private bool canJump = true;
-    public int health = 6;
-    public GameObject heart3;
-    public GameObject heart2;
-    public GameObject heart1;
+    public int health = 1;
     public Sprite fullHeart;
     public Sprite halfHeart;
     public Sprite emptyHeart;
@@ -68,54 +65,15 @@ public class playerScript : MonoBehaviour {
 
         if (collision.gameObject.tag == "spike" && health > 0)
         {
-            health--;
+            health = 0;
         }
     }
 
     private void checkHealth()
     {
-        // player health
-        if (health == 6)
+        // player health check
+        if (health <= 0)
         {
-            heart3.GetComponent<Image>().sprite = fullHeart;
-            heart2.GetComponent<Image>().sprite = fullHeart;
-            heart1.GetComponent<Image>().sprite = fullHeart;
-        }
-        else if (health == 5)
-        {
-            heart3.GetComponent<Image>().sprite = halfHeart;
-            heart2.GetComponent<Image>().sprite = fullHeart;
-            heart1.GetComponent<Image>().sprite = fullHeart;
-        }
-        else if (health == 4)
-        {
-            heart3.GetComponent<Image>().sprite = emptyHeart;
-            heart2.GetComponent<Image>().sprite = fullHeart;
-            heart1.GetComponent<Image>().sprite = fullHeart;
-        }
-        else if (health == 3)
-        {
-            heart3.GetComponent<Image>().sprite = emptyHeart;
-            heart2.GetComponent<Image>().sprite = halfHeart;
-            heart1.GetComponent<Image>().sprite = fullHeart;
-        }
-        else if (health == 2)
-        {
-            heart3.GetComponent<Image>().sprite = emptyHeart;
-            heart2.GetComponent<Image>().sprite = emptyHeart;
-            heart1.GetComponent<Image>().sprite = fullHeart;
-        }
-        else if (health == 1)
-        {
-            heart3.GetComponent<Image>().sprite = emptyHeart;
-            heart2.GetComponent<Image>().sprite = emptyHeart;
-            heart1.GetComponent<Image>().sprite = halfHeart;
-        }
-        else if (health <= 0)
-        {
-            heart3.GetComponent<Image>().sprite = emptyHeart;
-            heart2.GetComponent<Image>().sprite = emptyHeart;
-            heart1.GetComponent<Image>().sprite = emptyHeart;
             Debug.Log("dead");
         }
     }
@@ -143,6 +101,6 @@ public class playerScript : MonoBehaviour {
     {
         logic.restartLevel();
         transform.position = currentLevel.transform.position;
-        health = 6;
+        health = 1;
     }
 }

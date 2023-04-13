@@ -8,6 +8,6 @@ public class backToTitle : MonoBehaviour
     public Scene scene;
     public void backTitle()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(0);
     }
 }

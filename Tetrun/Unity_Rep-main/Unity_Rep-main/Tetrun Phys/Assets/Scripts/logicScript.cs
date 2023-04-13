@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -14,10 +15,18 @@ public class logicScript : MonoBehaviour
     public GameObject spawn1;
     public GameObject spawn2;
     public GameObject player;
+    public Text timerText;
+    public static logicScript instance;
+    private TimeSpan timePlaying;
+    private bool timerGoing;
+    private float elapsedTime;
+    public Text finalTime;
 
     private void Start()
     {
         level = 1;
+        timerText.text = "00:00.00";
+        beginTimer();
     }
 
     void Update()
@@ -35,6 +44,41 @@ public class logicScript : MonoBehaviour
         coinCount += coinsToAdd;
         coinsText.text = coinCount.ToString();
     }
+
+    [ContextMenu("Timer")]
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    public void beginTimer()
+    {
+        timerGoing = true;
+        elapsedTime = 0f;
+
+        StartCoroutine(UpdateTimer());
+    }
+
+    public void endTimer()
+    {
+        timerGoing = false;
+        finalTime.text = timerText.text;
+    }
+
+    private IEnumerator UpdateTimer()
+    {
+        while (timerGoing)
+        {
+            elapsedTime += Time.deltaTime;
+            timePlaying = TimeSpan.FromSeconds(elapsedTime);
+            string timePlayingStr = timePlaying.ToString("mm':'ss'.'ff");
+            timerText.text = timePlayingStr;
+
+            yield return null;
+        }
+    }
+
+
 
     private void levelCheck()
     {
@@ -58,13 +102,17 @@ public class logicScript : MonoBehaviour
 
     public void victory()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(2);
     }
 
     public void restartGame()
     {
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         level = 1;
+    }
+
+    public void death()
+    {
+        SceneManager.LoadScene(3);
     }
 }

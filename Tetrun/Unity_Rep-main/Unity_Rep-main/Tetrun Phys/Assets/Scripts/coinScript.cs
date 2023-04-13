@@ -10,6 +10,8 @@ public class coinScript : MonoBehaviour
     bool moveCoin;
     public float speed = 5f;
     GameObject target;
+    public AudioSource coinSound;
+    [SerializeField] private AudioClip coin;
 
     private void Start()
     {
@@ -28,6 +30,7 @@ public class coinScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "player")
         {
+            soundManager.instance.playSound(coin);
             logic.addCoins(1);
             moveCoin = true;
             //Destroy(gameObject, 1f);

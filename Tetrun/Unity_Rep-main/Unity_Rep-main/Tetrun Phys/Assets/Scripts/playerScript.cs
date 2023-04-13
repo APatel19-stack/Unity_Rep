@@ -19,6 +19,8 @@ public class playerScript : MonoBehaviour {
     public bool outBounds = false;
     public logicScript logic;
     public GameObject currentLevel;
+    public AudioSource playerSound;
+    [SerializeField] private AudioClip jumpSound, deathSound;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,7 @@ public class playerScript : MonoBehaviour {
 
         if (Input.GetButtonDown("Jump") && canJump)
         {
+            soundManager.instance.playSound(jumpSound);
             rb.velocity = new Vector2(rb.velocity.x, jump);
             canJump = false;
         }
@@ -93,14 +96,14 @@ public class playerScript : MonoBehaviour {
         }
         if(collision.gameObject.tag == "finalLevel")
         {
+            logic.endTimer();
             logic.victory();
         }
     }
 
     public void Death()
     {
-        logic.restartLevel();
-        transform.position = currentLevel.transform.position;
-        health = 1;
+        soundManager.instance.playSound(deathSound);
+        logic.death();
     }
 }

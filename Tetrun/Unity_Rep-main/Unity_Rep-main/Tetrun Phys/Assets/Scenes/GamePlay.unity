@@ -3991,6 +3991,7 @@ MonoBehaviour:
   player: {fileID: 1051509018}
   timerText: {fileID: 520825553}
   finalTime: {fileID: 9165471152231125144, guid: a666e681215a5c446a17afcc44981b67, type: 3}
+  bestTime: {fileID: 4050200893599278250, guid: f64f82d8099d31941b189bc9dd393c80, type: 3}
 --- !u!4 &995196995
 Transform:
   m_ObjectHideFlags: 0

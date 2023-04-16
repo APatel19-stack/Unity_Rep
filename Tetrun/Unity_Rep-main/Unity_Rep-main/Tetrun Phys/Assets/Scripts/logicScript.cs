@@ -21,9 +21,14 @@ public class logicScript : MonoBehaviour
     private bool timerGoing;
     private float elapsedTime;
     public Text finalTime;
+    public Text bestTime;
+    public float bestCheck = 10000f;
+    private bool hasPlayed = false;
+    private string stillBest; 
 
     private void Start()
     {
+        hasPlayed = true;
         level = 1;
         timerText.text = "00:00.00";
         beginTimer();
@@ -63,6 +68,23 @@ public class logicScript : MonoBehaviour
     {
         timerGoing = false;
         finalTime.text = timerText.text;
+        bestTimeCheck();
+    }
+
+    public void bestTimeCheck()
+    {
+        if(elapsedTime < bestCheck && hasPlayed)
+        {
+            bestCheck = elapsedTime;
+            bestTime.text = "Best Time:\n" + finalTime.text;
+            stillBest = finalTime.text;
+        } else if (!hasPlayed)
+        {
+            bestTime.text = "";
+        } else
+        {
+            bestTime.text = "Best Time:\n" + stillBest;
+        }
     }
 
     private IEnumerator UpdateTimer()

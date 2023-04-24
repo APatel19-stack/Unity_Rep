@@ -67,23 +67,23 @@ public class logicScript : MonoBehaviour
     public void endTimer()
     {
         timerGoing = false;
-        finalTime.text = timerText.text;
+        
+        
         bestTimeCheck();
     }
 
     public void bestTimeCheck()
     {
-        if(elapsedTime < bestCheck && hasPlayed)
+        if(elapsedTime < bestCheck)
         {
+            finalTime.text = timerText.text;
+            stillBest = finalTime.text;
             bestCheck = elapsedTime;
             bestTime.text = "Best Time:\n" + finalTime.text;
-            stillBest = finalTime.text;
-        } else if (!hasPlayed)
-        {
-            bestTime.text = "";
         } else
         {
             bestTime.text = "Best Time:\n" + stillBest;
+            finalTime.text = timerText.text;
         }
     }
 

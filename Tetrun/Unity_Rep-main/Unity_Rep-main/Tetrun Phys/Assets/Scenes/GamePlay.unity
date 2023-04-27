@@ -8793,6 +8793,10 @@ PrefabInstance:
       propertyPath: currentLevel
       value: 
       objectReference: {fileID: 1346676583}
+    - target: {fileID: 7046807729581223722, guid: a33a69f37a27c5742a4b3faa238abafd, type: 3}
+      propertyPath: rotationSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 27538b5d342146f4282960b47b2a7287, type: 3}
     - target: {fileID: 7046807729581223761, guid: a33a69f37a27c5742a4b3faa238abafd, type: 3}
       propertyPath: m_Name
       value: Player

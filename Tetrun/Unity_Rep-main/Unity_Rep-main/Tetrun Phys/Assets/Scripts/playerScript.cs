@@ -20,7 +20,7 @@ public class playerScript : MonoBehaviour {
     public logicScript logic;
     public GameObject currentLevel;
     public AudioSource playerSound;
-    [SerializeField] private AudioClip jumpSound, deathSound;
+    [SerializeField] private AudioClip jumpSound, deathSound, rotationSound;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +41,14 @@ public class playerScript : MonoBehaviour {
             soundManager.instance.playSound(jumpSound);
             rb.velocity = new Vector2(rb.velocity.x, jump);
             canJump = false;
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            soundManager.instance.playSound(rotationSound);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            soundManager.instance.playSound(rotationSound);
         }
 
         //if (!Mathf.Approximately(0, moveX))

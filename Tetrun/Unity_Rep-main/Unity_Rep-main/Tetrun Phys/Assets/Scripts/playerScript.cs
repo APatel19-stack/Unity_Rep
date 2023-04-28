@@ -8,7 +8,7 @@ using static UnityEngine.GraphicsBuffer;
 public class playerScript : MonoBehaviour {
 
     private Rigidbody2D rb;
-    private float jump = 11f;
+    private float jump = 14f;
     private float speed = 8f;
     public GameObject indicator;
     private bool canJump = true;

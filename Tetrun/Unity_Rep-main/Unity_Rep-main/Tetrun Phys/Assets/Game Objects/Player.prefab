@@ -61,7 +61,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.6155353
+  orthographic size: 11.49099
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -234,12 +234,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicator: {fileID: 0}
   health: 6
-  heart3: {fileID: 0}
-  heart2: {fileID: 0}
-  heart1: {fileID: 0}
   fullHeart: {fileID: 0}
   halfHeart: {fileID: 0}
   emptyHeart: {fileID: 0}
+  outBounds: 0
+  logic: {fileID: 0}
+  currentLevel: {fileID: 0}
+  playerSound: {fileID: 0}
+  jumpSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  rotationSound: {fileID: 0}
 --- !u!1 &7919736061274377255
 GameObject:
   m_ObjectHideFlags: 0

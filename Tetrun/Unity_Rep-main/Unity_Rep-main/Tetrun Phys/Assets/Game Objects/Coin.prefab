@@ -118,7 +118,7 @@ MonoBehaviour:
   logic: {fileID: 0}
   speed: 5
   coinSound: {fileID: 457143170795779284}
-  coin: {fileID: 8300000, guid: f1d0b733a8cb5a34b8b02fdd2a3a5e71, type: 3}
+  coin: {fileID: 8300000, guid: 28d29140efbd34846a8b44ec97c2b35f, type: 3}
 --- !u!82 &457143170795779284
 AudioSource:
   m_ObjectHideFlags: 0

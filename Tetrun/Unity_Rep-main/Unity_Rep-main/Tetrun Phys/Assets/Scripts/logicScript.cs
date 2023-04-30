@@ -22,12 +22,14 @@ public class logicScript : MonoBehaviour
     private float elapsedTime;
     public Text finalTime;
     public Text bestTime;
-    public float bestCheck = 10000f;
+    public float bestCheck;
     private bool hasPlayed = false;
     private string stillBest; 
 
     private void Start()
     {
+        bestCheck = 10000f;
+        bestTimeCheck();
         hasPlayed = true;
         level = 1;
         timerText.text = "00:00.00";
@@ -80,10 +82,13 @@ public class logicScript : MonoBehaviour
             stillBest = finalTime.text;
             bestCheck = elapsedTime;
             bestTime.text = "Best Time:\n" + finalTime.text;
-        } else
+        } else if(elapsedTime > bestCheck)
         {
             bestTime.text = "Best Time:\n" + stillBest;
             finalTime.text = timerText.text;
+        } else
+        {
+            bestTime.text = "Best Time:\n00.00:00";
         }
     }
 
@@ -124,7 +129,7 @@ public class logicScript : MonoBehaviour
 
     public void victory()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(4);
     }
 
     public void restartGame()
